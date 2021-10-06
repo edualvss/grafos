@@ -136,7 +136,7 @@ void TelaPrincipal::botaoAdicionarLigacao() {
 
     if(origem == destino) {
         QMessageBox msg(this);
-        msg.setText(trUtf8("ORIGEM igual ao DESTINO"));
+        msg.setText(tr("ORIGEM igual ao DESTINO"));
         msg.setStandardButtons(QMessageBox::Ok);
         msg.setDefaultButton(QMessageBox::Ok);
         msg.exec();

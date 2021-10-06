@@ -33,7 +33,7 @@ void Controle::caixeiroViajante(int verticeInicial) {
     char* circuito = vamp->getCircuito();
     int distancia = vamp->getDistancia();
 
-    QString cx = trUtf8("Caixeiro Viajante!\nHeurística: Vértice Adjacente Mais Próximo\n\nDistância: %1").arg(QString::number(distancia));
+    QString cx = tr("Caixeiro Viajante!\nHeurística: Vértice Adjacente Mais Próximo\n\nDistância: %1").arg(QString::number(distancia));
     QString caminho = "Caminho: "+QString::fromStdString(circuito);
 
     this->tela->exibirMensagemInformativa(cx,caminho);
@@ -55,9 +55,9 @@ void Controle::verificarConexidade(int verticeInicial) {
         }
         tela->colorirDesenho(cores);
         delete[] cores;
-        this->tela->exibirMensagemInformativa(trUtf8("É conexo"));
+        this->tela->exibirMensagemInformativa(tr("É conexo"));
     } else { // Se não for busca os sub grafos conexos
-        QString exibir = trUtf8("Não é conexo!\n\nSubgrafos conexos!\n\n");
+        QString exibir = tr("Não é conexo!\n\nSubgrafos conexos!\n\n");
         char** subGrafos = verificador->getSubGrafosConexos();// Obtém Strings com os vértices conexos, separados por vírgula, e sub grafos separados nas posições do vetor
         int qtdSubGrafos = verificador->getQtdSubGrafos();// Obtém a qtd de subgrafos
         int* cores = new int[numeroVertices];
@@ -99,7 +99,7 @@ void Controle::colorirGrafo() {
     int* cores = coloridor->getCores();
     int numeroCromatico = coloridor->getNumeroCromatico();
 
-    this->tela->exibirMensagemInformativa(trUtf8("Número Cromático do Grafo: %1").arg(QString::number(numeroCromatico)));
+    this->tela->exibirMensagemInformativa(tr("Número Cromático do Grafo: %1").arg(QString::number(numeroCromatico)));
 
     // Aplicar cores ao desenho
     this->tela->colorirDesenho(cores);
@@ -137,9 +137,9 @@ void Controle::testarPlanaridade() {
 
     Planaridade* testador = new Planaridade(numeroVertices,this->obterQuantidadeArestas(),matrizAdjacencia);
     if(testador->isPlanar()) {
-        this->tela->exibirMensagemInformativa(trUtf8("O Grafo é planar!"));
+        this->tela->exibirMensagemInformativa(tr("O Grafo é planar!"));
     } else {
-        this->tela->exibirMensagemInformativa(trUtf8("O Grafo não é planar!"));
+        this->tela->exibirMensagemInformativa(tr("O Grafo não é planar!"));
     }
 
     delete testador;
@@ -299,7 +299,7 @@ void Controle::numeroVerticesDefinido(int numeroVertices) {
 void Controle::adicionarLigacao(int tipoLigacao, int origem, int destino, int peso) {
 
     if(this->verificaLigacaoJaExiste(origem,destino)) {
-        this->tela->exibirMensagemInformativa(trUtf8("Ligação já existente!"),trUtf8("Caso queira alterar o tipo\nremova a ligação existente e\ncrie a ligação desejada!"));
+        this->tela->exibirMensagemInformativa(tr("Ligação já existente!"),tr("Caso queira alterar o tipo\nremova a ligação existente e\ncrie a ligação desejada!"));
         return;
     }
 
